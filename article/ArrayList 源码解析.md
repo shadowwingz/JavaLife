@@ -8,7 +8,7 @@ public ArrayList() {
 }
 ```
 
-在这个构造方法里，ArrayList 把它内置的一个空数组 `DEFAULTCAPACITY_EMPTY_ELEMENTDATA` 赋值给了 `elementData` 变量。也就是说，当我们调用 `ArrayList list = new ArrayList()` 时，在 ArrayList 内部也构建好了一个空数组。
+在这个构造方法里，ArrayList 把它内置的一个空数组 `DEFAULTCAPACITY_EMPTY_ELEMENTDATA` 赋值给了 `elementData` 变量。也就是说，当我们调用 `ArrayList list = new ArrayList()` 时，在 ArrayList 内部也构建好了一个空数组。从这里我们可以发现，ArrayList 内部是用数组实现的。
 
 ### 增 ###
 
@@ -81,3 +81,55 @@ public static native void arraycopy(Object src,  int  srcPos,
 ```
 
 从名字上看，这个方法是用来拷贝数组的，具体的拷贝方式直接用一张图来解释。
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/arraycopy%20%E5%9B%BE%E8%A7%A3.jpg"/>
+</p>
+
+### 删 ###
+
+```java
+public boolean remove(Object o) {
+    // 要删除的对象如果为 null
+    if (o == null) {
+        // 遍历
+        for (int index = 0; index < size; index++)
+            // 如果发现有元素为 null
+            if (elementData[index] == null) {
+                // 就删除这个元素
+                fastRemove(index);
+                return true;
+            }
+    } else { // 要删除的对象不为 null
+        for (int index = 0; index < size; index++)
+            // 如果发现有元素和要删除的元素相同
+            if (o.equals(elementData[index])) {
+                // 就删除这个元素
+                fastRemove(index);
+                return true;
+            }
+    }
+    return false;
+}
+
+private void fastRemove(int index) {
+    modCount++;
+    // 要移动的元素数量
+    int numMoved = size - index - 1;
+    if (numMoved > 0)
+        // 拷贝数组
+        System.arraycopy(elementData, index+1, elementData, index,
+                         numMoved);
+    elementData[--size] = null; // clear to let GC do its work
+}
+```
+
+首先，ArrayList 会遍历它的所有元素，然后和要删除的元素比较，不管这个要删除的元素是不是 null，如果发现有元素和要删除的元素相同，就删除。删除调用的是 `System.arraycopy` 方法。有的童鞋可能会疑惑，删除就删除，干嘛要拷贝数组呢？
+
+首先，让我们想一想，如果是我们来实现这个删除元素功能，我们会怎么实现。我的第一反应是直接把索引为 index 的元素置为 null。但是这样会有一个问题，我们是要把索引为 index 的元素给删除掉，现在仅仅是把它置为 null 而已，元素还在那里。我们调用 list.get(index) 还是能获取到那个元素。所以这个方法不可行。
+
+ArrayList 的方法是从源数组中要删除的元素的后一位开始，拷贝后面的数组，拷贝到源数组中要删除的元素的前一位，这样，要删除的元素就在拷贝过程中被丢弃了。这样描述可能比较抽象，用张图解释下：
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/ArrayList%20%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0.jpg"/>
+</p>
