@@ -164,3 +164,30 @@ E elementData(int index) {
 可以看到，修改元素的逻辑还是比较简单的，先检查待修改元素的索引，是否小于 ArrayList 中已有元素的数量，如果不小于，就抛异常。
 
 如果索引合法，就先取出待修改元素，然后把新元素赋值给对应索引。最后返回待修改元素。
+
+### 查 ###
+
+ArrayList 查询元素的方法是 `get` 方法：
+
+```java
+public E get(int index) {
+    rangeCheck(index);
+
+    return elementData(index);
+}
+
+private void rangeCheck(int index) {
+    if (index >= size)
+        throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+}
+
+E elementData(int index) {
+    return (E) elementData[index];
+}
+```
+
+可以看到，查询元素的逻辑也是比较简单，先检查索引是否合法，如果合法，就返回索引对应的元素。
+
+## 总结 ##
+
+ArrayList 的内部实现使用的是数组，所以查询元素和修改元素的效率很高，而增加元素和删除元素的效率较低，因为在增加或者删除的过程中都要拷贝一次数组。
