@@ -133,3 +133,34 @@ ArrayList 的方法是从源数组中要删除的元素的后一位开始，拷�
 <p align="center">
   <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/ArrayList%20%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0.jpg"/>
 </p>
+
+### 改 ###
+
+ArrayList 修改元素的方法是 `set` 方法：
+
+```java
+// index 是待修改元素的索引
+// element 是新元素
+public E set(int index, E element) {
+    // 检查索引是否合法
+    rangeCheck(index);
+
+    // 取出待修改元素
+    E oldValue = elementData(index);
+    elementData[index] = element;
+    return oldValue;
+}
+
+private void rangeCheck(int index) {
+    if (index >= size)
+        throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+}
+
+E elementData(int index) {
+    return (E) elementData[index];
+}
+```
+
+可以看到，修改元素的逻辑还是比较简单的，先检查待修改元素的索引，是否小于 ArrayList 中已有元素的数量，如果不小于，就抛异常。
+
+如果索引合法，就先取出待修改元素，然后把新元素赋值给对应索引。最后返回待修改元素。
