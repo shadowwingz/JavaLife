@@ -86,6 +86,27 @@ public static native void arraycopy(Object src,  int  srcPos,
   <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/arraycopy%20%E5%9B%BE%E8%A7%A3.jpg"/>
 </p>
 
+
+再看下 `addAll` 方法，这个方法是用来增加一个集合，也就是把一个 ArrayList 添加到另一个 ArrayList 中：
+
+```java
+public boolean addAll(Collection<? extends E> c) {
+    // 集合转换为数组
+    Object[] a = c.toArray();
+    int numNew = a.length;
+    ensureCapacityInternal(size + numNew);  // Increments modCount
+    System.arraycopy(a, 0, elementData, size, numNew);
+    size += numNew;
+    return numNew != 0;
+}
+
+public Object[] toArray() {
+    return Arrays.copyOf(elementData, size);
+}
+```
+
+我们发现，传进来的 ArrayList 被 `toArray` 方法转换成了数组，然后再检查需不需要扩容，然后调用 `System.arraycopy` 把传进来的 ArrayList 追加到源数组后面，接着更新 ArrayList 的大小。
+
 ### 删 ###
 
 ```java
