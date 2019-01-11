@@ -8,7 +8,7 @@
 
 说到节点，我们来看下 LinkedList 里的节点：
 
-```
+```java
 private static class Node<E> {
     // 元素值
     E item;
