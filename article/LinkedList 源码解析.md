@@ -153,3 +153,7 @@ void linkLast(E e) {
 <p align="center">
   <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/l%E5%90%8E%E7%BD%AE%E8%8A%82%E7%82%B9%E6%8C%87%E5%90%91newNode.jpg"/>
 </p>
+
+这里我们可以看到，链表里现在有两个节点了。头节点的值是 1，第二个节点的值是 2。图中还有个 `prev`、`item`、`next` 都为 null 的节点，这个节点由于没有引用指向它，所以很快会被 gc 回收。
+
+到这里，向 LinkedList 中添加元素的过程我们就知道了。
