@@ -158,7 +158,9 @@ void linkLast(E e) {
 
 终于会变成这样：
 
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/LinkedList/add(2)%E6%B5%81%E7%A8%8B/5.jpg"/>
+</p>
 
 到这里，向 LinkedList 中添加元素的过程我们就知道了。
 
