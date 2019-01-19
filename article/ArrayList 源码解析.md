@@ -83,7 +83,7 @@ public static native void arraycopy(Object src,  int  srcPos,
 从名字上看，这个方法是用来拷贝数组的，具体的拷贝方式直接用一张图来解释。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/arraycopy%20%E5%9B%BE%E8%A7%A3.jpg"/>
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/ArrayList/arraycopy%20%E5%9B%BE%E8%A7%A3.jpg"/>
 </p>
 
 
@@ -152,7 +152,7 @@ private void fastRemove(int index) {
 ArrayList 的方法是从源数组中要删除的元素的后一位开始，拷贝后面的数组，拷贝到源数组中要删除的元素的前一位，这样，要删除的元素就在拷贝过程中被丢弃了。这样描述可能比较抽象，用张图解释下：
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/ArrayList%20%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0.jpg"/>
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/ArrayList/ArrayList%20%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0.jpg"/>
 </p>
 
 ### 改 ###
