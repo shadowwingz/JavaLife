@@ -166,3 +166,121 @@ void linkLast(E e) {
 
 ### 删除元素 ###
 
+我们再来看一下 LinkedList 是怎么删除元素的，先看下面一段代码：
+
+```java
+LinkedList<String> linkedList = new LinkedList<>();
+linkedList.add("1");
+linkedList.add("2");
+linkedList.remove("2");
+linkedList.remove("1");
+```
+
+和添加元素稍微有点不同的是，LinkedList 存储的是 String 类型的元素，而不是 Integer 类型的元素。其实对 LinkedList 来说并没什么区别。`linkedList.add("1")` 和 `linkedList.add("2")` 的代码我们上面已经分析过了，这里就不说了。我们直接分析 `linkedList.remove("2")` 这句代码，我们看一下 `remove(Object o)` 的源码：
+
+```java
+public boolean remove(Object o) {
+    if (o == null) {
+        // 1
+        for (Node<E> x = first; x != null; x = x.next) {
+            if (x.item == null) {
+                unlink(x);
+                return true;
+            }
+        }
+    } else {
+        // 2
+        for (Node<E> x = first; x != null; x = x.next) {
+            // 3
+            if (o.equals(x.item)) {
+                // 4
+                unlink(x);
+                return true;
+            }
+        }
+    }
+    return false;
+}
+```
+
+因为 `"2"` 不为 `null`，所以会执行到代码 2。开始从头遍历链表，遍历的方式是创建一个节点 x 指向 first 节点：
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/LinkedList/remove(2)%E6%B5%81%E7%A8%8B/1.jpg"/>
+</p>
+
+接着会执行代码 3，判断 x 节点的 item 是否和 o 对象相等。o 对象就是我们传入的 `"2"`，x 节点的 item 是 `"1"`，所以不相等，因为 `x != null` 成立，所以执行 `x = x.next`，此时节点 x 会指向 first 节点的下一个节点：
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/LinkedList/remove(2)%E6%B5%81%E7%A8%8B/2.jpg"/>
+</p>
+
+接着再执行代码 3，判断 x 节点的 item 是否和 o 对象相等。此时 x 节点的 item 是 `"2"`，所以相等，接着执行代码 4，`unlink(x)`：
+
+```java
+E unlink(Node<E> x) {
+    // assert x != null;
+    // 1
+    final E element = x.item;
+    final Node<E> next = x.next;
+    final Node<E> prev = x.prev;
+
+    // 2
+    if (prev == null) {
+        first = next;
+    } else {
+        // 3
+        prev.next = next;
+        x.prev = null;
+    }
+
+    // 4
+    if (next == null) {
+        last = prev;
+    } else {
+        // 5
+        next.prev = prev;
+        x.next = null;
+    }
+
+    // 6
+    x.item = null;
+    // LinkedList 元素数量 -1
+    size--;
+    // LinkedList 修改次数 +1
+    modCount++;
+    // 返回被删除的元素
+    return element;
+}
+```
+
+首先，看代码 1，代码 1 很简单，就是把 x 节点的 item、next、prev 全部取出来，item 是 2，next 是 null，prev 是节点 first。
+
+接着执行代码 2，这时会判断 prev 是否为 null，因为 prev 是节点 first，不为 null，所以会进入 else，也就是代码 3，`prev.next = next`，这句代码的意思是，把 next 节点的内存地址（null）存入 prev 节点（first 节点）的 next 域中：
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/LinkedList/remove(2)%E6%B5%81%E7%A8%8B/3.jpg"/>
+</p>
+
+接着执行 `x.prev = null`，也就是把 x 节点的 prev 置为 null：
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/LinkedList/remove(2)%E6%B5%81%E7%A8%8B/4.jpg"/>
+</p>
+
+接着执行代码 4，判断 next 是否为 null，我们之前说过，next 是 null，所以会进入 if 语句，执行 `last = prev`：
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/LinkedList/remove(2)%E6%B5%81%E7%A8%8B/5.jpg"/>
+</p>
+
+接着执行代码 6，`x.item = null`：
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/LinkedList/remove(2)%E6%B5%81%E7%A8%8B/6.jpg"/>
+</p>
+
+到这里，一个元素就被删除了。我们总结一下上面的流程，发现 LinkedList 删除元素需要 2 个步骤：
+
+- 第一，确定要删除的元素
+- 第二，把要删除的元素和相邻节点断开连接，也就是把节点的 prev，next，item 全部置为 null
