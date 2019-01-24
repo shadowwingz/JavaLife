@@ -5,7 +5,7 @@ JavaLife
 <br>
 
 - Java 基础
-    - 一、数据类型
+    - 一、[数据类型](https://github.com/shadowwingz/JavaLife/blob/master/article/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md)
         - 包装类型
         - 缓存池
     - String
