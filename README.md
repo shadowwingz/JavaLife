@@ -5,11 +5,11 @@ JavaLife
 <br>
 
 - Java 基础
-    - 一、[数据类型](https://github.com/shadowwingz/JavaLife/blob/master/article/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md)
+    - [一、数据类型](https://github.com/shadowwingz/JavaLife/blob/master/article/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md)
         - [包装类型](https://github.com/shadowwingz/JavaLife/blob/master/article/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B)
         - [为什么要有包装类型](https://github.com/shadowwingz/JavaLife/blob/master/article/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B)
         - [缓存池](https://github.com/shadowwingz/JavaLife/blob/master/article/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#%E7%BC%93%E5%AD%98%E6%B1%A0)
-    - String
+    - [二、String](https://github.com/shadowwingz/JavaLife/blob/master/article/String.md)
         - 概览
         - 不可变的好处
         - String, StringBuffer and StringBuilder
