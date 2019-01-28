@@ -76,3 +76,28 @@ System.out.println(s1 == s2);
 
 我们画图解析下，先看第一句代码 `String s1 = "abcd"`
 
+
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/StringPool/1.jpg"/>
+</p>
+
+
+
+首先，在堆（Heap）内存的字符串常量池中创建了一个 `"abcd"`字符串对象，然后 String 声明了一个指针 `s1`，这个指针是存储在栈（Stack）上的。然后指针指向 `"abcd"` 对象，或者说，指针 `s1` 中存放了 `abcd` 字符串对象的地址。
+
+
+
+接着看第二句代码，`String s2 = "abcd"`：
+
+
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/StringPool/2.jpg"/>
+</p>
+
+首先，程序会判断堆（Heap）内存的字符串常量池中是否有 `"abcd"`字符串对象，然后发现有这个对象。然后 String 声明了一个指针 `s1`，这个指针是存储在栈（Stack）上的。然后指针指向字符串常量池中已有的 `"abcd"` 对象，或者说，指针 `s2` 中存放了 `abcd` 字符串对象的地址。
+
+
+
+我们发现，s1 和 s2 指向的是同一个对象。所以 s1 == s2 这句代码的执行结果是 true。我们也可以发现字符串常量池的作用，它的作用就是缓存字符串，如果发现已经有了这个字符串对象，就直接拿来用，不用再创建了。
