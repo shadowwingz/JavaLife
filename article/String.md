@@ -165,6 +165,6 @@ StringBuffer 和 StringBuilder 内部是用 AbstractStringBuilder 实现的，�
 
 2. 线程安全
 
-String 是不可变的，所以是线程安全。
-StringBuffer 内部使用 synchronized 进行同步，所以是线程安全。
-StringBuilder 是可变的，而且内部没有使用 synchronized 进行同步，所以不是线程安全。
+- String 是不可变的，所以是线程安全。
+- StringBuffer 内部使用 synchronized 进行同步，所以是线程安全。
+- StringBuilder 是可变的，而且内部没有使用 synchronized 进行同步，所以不是线程安全。
