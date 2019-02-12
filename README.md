@@ -11,10 +11,8 @@ JavaLife
         - [缓存池](https://github.com/shadowwingz/JavaLife/blob/master/article/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#%E7%BC%93%E5%AD%98%E6%B1%A0)
     - [二、String](https://github.com/shadowwingz/JavaLife/blob/master/article/String.md)
         - [概览](https://github.com/shadowwingz/JavaLife/blob/master/article/String.md#%E6%A6%82%E8%A7%88)
-        - 不可变的好处
-        - String, StringBuffer and StringBuilder
-        - String Pool
-        - new String("abc")
+        - [不可变的好处](https://github.com/shadowwingz/JavaLife/blob/master/article/String.md#%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%9A%84%E5%A5%BD%E5%A4%84)
+        - [String, StringBuffer and StringBuilder](https://github.com/shadowwingz/JavaLife/blob/master/article/String.md#string-stringbuffer-and-stringbuilder)
     - 三、运算
         - 参数传递
         - float 与 double
@@ -25,8 +23,8 @@ JavaLife
         - 抽象类与接口
         - super
         - 重写与重载
-        - 五、Object 通用方法
-    - 概览
+    - 五、Object 通用方法
+        - 概览
         - equals()
         - hashCode()
         - toString()
