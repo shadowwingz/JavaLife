@@ -45,11 +45,11 @@ System.out.println(s);
 输出：b
 ```
 
+从输出结果可以看出，s 的确是改变了，那为什么我们说 String 是不可变的。因为 s 只是 String 对象的引用，引用只是一个 4 字节的数据，里面存放了它所指向的对象 `"a"` 的地址。当我们执行 `s = "b"`，实际上是把 `"b"` 对象的地址赋值给了 s，现在 s 指向的是 `"b"` 对象，原来的对象 `"a"` 还在内存中。
 
-
-从输出结果可以看出，s 的确是改变了，那为什么我们说 String 是不可变的。因为 s 只是 String 对象的引用，引用只是一个 4 字节的数据，里面存放了它所指向的对象（"a"）的地址。当我们执行 `s = "b"`，实际上是把 `"b"` 对象的地址赋值给了 s，现在 s 指向的是 `"b"` 对象，原来的对象 `"a"` 还在内存中。
-
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/StringPool/3.jpg"/>
+</p>
 
 ### 不可变的好处 ###
 
@@ -92,21 +92,13 @@ System.out.println(s1 == s2);
 
 我们画图解析下，先看第一句代码 `String s1 = "abcd"`
 
-
-
 <p align="center">
   <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/StringPool/1.jpg"/>
 </p>
 
-
-
 首先，在堆（Heap）内存的字符串常量池中创建了一个 `"abcd"`字符串对象，然后 String 声明了一个指针 `s1`，这个指针是存储在栈（Stack）上的。然后指针指向 `"abcd"` 对象，或者说，指针 `s1` 中存放了 `abcd` 字符串对象的地址。
 
-
-
 接着看第二句代码，`String s2 = "abcd"`：
-
-
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/StringPool/2.jpg"/>
@@ -114,15 +106,9 @@ System.out.println(s1 == s2);
 
 首先，程序会判断堆（Heap）内存的字符串常量池中是否有 `"abcd"`字符串对象，然后发现有这个对象。然后 String 声明了一个指针 `s1`，这个指针是存储在栈（Stack）上的。然后指针指向字符串常量池中已有的 `"abcd"` 对象，或者说，指针 `s2` 中存放了 `abcd` 字符串对象的地址。
 
-
-
 我们发现，s1 和 s2 指向的是同一个对象。所以 `s1 == s2` 这句代码的执行结果是 true。我们也可以发现字符串常量池的作用，它的作用就是缓存字符串，如果发现已经有了这个字符串对象，就直接拿来用，不用再创建了。
 
-
-
 到这里，String Pool（字符串常量池）就介绍完了。
-
-
 
 如果 String 被设计成可变的，那么 String Pool 就没什么用了。看下这段代码：
 
@@ -132,3 +118,53 @@ String s2 = "abcd";
 s1 = "adc";
 ```
 
+前两句代码我们已经解析过了，
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/StringPool/2.jpg"/>
+</p>
+
+接着看第三句代码，因为 String 是不可变的，所以执行了 `s1 = "adc"` 这句代码之后是这个样子：
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/StringPool/4.jpg"/>
+</p>
+
+首先，程序会判断堆（Heap）内存的字符串常量池中是否有 `"abc"`字符串对象，然后发现没有这个对象。于是在堆（Heap）内存的字符串常量池里创建了一个 `"abc"` 字符串对象，接着 `s1` 指向字符串 `"abc"`。到这里，我们可以看到，`"abcd"` 字符串对象并没有被改变，它还在堆（Heap）里。`"abc"` 字符串对象也不是由 `"abcd"` 字符串对象修改而来，而是重新创建的。
+
+现在假设 String 是可变的，这时执行 `s1 = "abc"` 这句代码之后是这个样子：
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shadowwingz/JavaLife/master/art/StringPool/5.jpg"/>
+</p>
+
+可以看到，`"abcd"` 字符串对象被修改成了 `"abc"` 对象，这样导致的结果就是，s1 和 s2 都被修改了。因为 s1，s2 指向的是同一个对象，而这显然不是我们想要的。
+
+### String, StringBuffer and StringBuilder ###
+
+1. 可变性
+
+String, StringBuffer 和 StringBuilder 的值都是 value 数组。
+
+```java
+public final class String
+    implements java.io.Serializable, Comparable<String>, CharSequence {
+    private final char value[];
+}
+```
+
+String 的 value 数组被 final 修饰，所以 String 是不可变的。
+
+```java
+abstract class AbstractStringBuilder implements Appendable, CharSequence {
+    char[] value;
+}
+```
+
+StringBuffer 和 StringBuilder 内部是用 AbstractStringBuilder 实现的，而 AbstractStringBuilder 的 value 数组没有被 final 修饰。所以 StringBuffer 和 StringBuilder 是可变的。
+
+2. 线程安全
+
+String 是不可变的，所以是线程安全。
+StringBuffer 内部使用 synchronized 进行同步，所以是线程安全。
+StringBuilder 是可变的，而且内部没有使用 synchronized 进行同步，所以不是线程安全。
