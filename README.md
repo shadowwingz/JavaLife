@@ -79,6 +79,9 @@ JRE or JDK
         - 类加载器分类
         - 双亲委派模型
         - 自定义类加载器实现
+- 面试题
+    - 多线程
+        - [创建多线程的三种方式](https://github.com/shadowwingz/JavaLife/blob/master/article/how_to_start_thread/how_to_start_thread.md)
 - 学习笔记
     - [Java 编程思想](https://github.com/shadowwingz/ThinkingInJava)
 
