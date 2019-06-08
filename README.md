@@ -82,6 +82,7 @@ JRE or JDK
 - 面试题
     - 多线程
         - [创建多线程的三种方式](https://github.com/shadowwingz/JavaLife/blob/master/article/how_to_start_thread/how_to_start_thread.md)
+        - [如何在 Java 中正确的终止一个线程](https://github.com/shadowwingz/JavaLife/blob/master/article/how_to_stop_thread/how_to_stop_thread.md)
 - 学习笔记
     - [Java 编程思想](https://github.com/shadowwingz/ThinkingInJava)
 
