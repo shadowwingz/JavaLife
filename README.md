@@ -87,6 +87,7 @@ JRE or JDK
         - [start 和 run 的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/differece_between_start_and_run/differece_between_start_and_run.md)
         - [sleep 和 wait 方法的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/difference_between_sleep_and_wait/difference_between_sleep_and_wait.md)
         - [wait 和 notify 的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/differece_between_wait_and_notify/differece_between_wait_and_notify.md)
+        - [生产者/消费者模型](https://github.com/shadowwingz/JavaLife/blob/master/article/producer_consumer/producer_consumer.md)
 - 学习笔记
     - [Java 编程思想](https://github.com/shadowwingz/ThinkingInJava)
 
