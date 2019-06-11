@@ -85,6 +85,7 @@ JRE or JDK
         - [如何在 Java 中正确的终止一个线程](https://github.com/shadowwingz/JavaLife/blob/master/article/how_to_stop_thread/how_to_stop_thread.md)
         - [Thread 和 Runnable的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/difference_between_thread_and_runnable/difference_between_thread_and_runnable.md)
         - [start 和 run 的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/differece_between_start_and_run/differece_between_start_and_run.md)
+        - [sleep 和 wait 方法的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/difference_between_sleep_and_wait/difference_between_sleep_and_wait.md)
 - 学习笔记
     - [Java 编程思想](https://github.com/shadowwingz/ThinkingInJava)
 
