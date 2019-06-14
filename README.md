@@ -89,6 +89,7 @@ JRE or JDK
         - [wait 和 notify 的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/differece_between_wait_and_notify/differece_between_wait_and_notify.md)
         - [生产者/消费者模型](https://github.com/shadowwingz/JavaLife/blob/master/article/producer_consumer/producer_consumer.md)
         - [Synchronized 关键字用法](https://github.com/shadowwingz/JavaLife/blob/master/article/usage_of_synchronized/usage_of_synchronized.md)
+        - [Java 多线程顺序执行](https://github.com/shadowwingz/JavaLife/blob/master/article/multi-thread_sequential_execution/multi-thread_sequential_execution.md)
 - 学习笔记
     - [Java 编程思想](https://github.com/shadowwingz/ThinkingInJava)
 
