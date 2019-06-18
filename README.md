@@ -52,6 +52,15 @@ JRE or JDK
         - 无限期等待（Waiting）
         - 限期等待（Timed Waiting）
         - 死亡（Terminated）
+    - [创建多线程的三种方式](https://github.com/shadowwingz/JavaLife/blob/master/article/how_to_start_thread/how_to_start_thread.md)
+    - [如何在 Java 中正确的终止一个线程](https://github.com/shadowwingz/JavaLife/blob/master/article/how_to_stop_thread/how_to_stop_thread.md)
+    - [Thread 和 Runnable的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/difference_between_thread_and_runnable/difference_between_thread_and_runnable.md)
+    - [start 和 run 的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/differece_between_start_and_run/differece_between_start_and_run.md)
+    - [sleep 和 wait 方法的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/difference_between_sleep_and_wait/difference_between_sleep_and_wait.md)
+    - [wait 和 notify 的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/differece_between_wait_and_notify/differece_between_wait_and_notify.md)
+    - [生产者/消费者模型](https://github.com/shadowwingz/JavaLife/blob/master/article/producer_consumer/producer_consumer.md)
+    - [Synchronized 关键字用法](https://github.com/shadowwingz/JavaLife/blob/master/article/usage_of_synchronized/usage_of_synchronized.md)
+    - [Java 多线程顺序执行](https://github.com/shadowwingz/JavaLife/blob/master/article/multi-thread_sequential_execution/multi-thread_sequential_execution.md)
 
 - Java 虚拟机
     - 一、运行时数据区域
@@ -79,17 +88,7 @@ JRE or JDK
         - 类加载器分类
         - 双亲委派模型
         - 自定义类加载器实现
-- 面试题
-    - 多线程
-        - [创建多线程的三种方式](https://github.com/shadowwingz/JavaLife/blob/master/article/how_to_start_thread/how_to_start_thread.md)
-        - [如何在 Java 中正确的终止一个线程](https://github.com/shadowwingz/JavaLife/blob/master/article/how_to_stop_thread/how_to_stop_thread.md)
-        - [Thread 和 Runnable的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/difference_between_thread_and_runnable/difference_between_thread_and_runnable.md)
-        - [start 和 run 的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/differece_between_start_and_run/differece_between_start_and_run.md)
-        - [sleep 和 wait 方法的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/difference_between_sleep_and_wait/difference_between_sleep_and_wait.md)
-        - [wait 和 notify 的区别](https://github.com/shadowwingz/JavaLife/blob/master/article/differece_between_wait_and_notify/differece_between_wait_and_notify.md)
-        - [生产者/消费者模型](https://github.com/shadowwingz/JavaLife/blob/master/article/producer_consumer/producer_consumer.md)
-        - [Synchronized 关键字用法](https://github.com/shadowwingz/JavaLife/blob/master/article/usage_of_synchronized/usage_of_synchronized.md)
-        - [Java 多线程顺序执行](https://github.com/shadowwingz/JavaLife/blob/master/article/multi-thread_sequential_execution/multi-thread_sequential_execution.md)
+
 - 学习笔记
     - [Java 编程思想](https://github.com/shadowwingz/ThinkingInJava)
 
